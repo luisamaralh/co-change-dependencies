@@ -19,15 +19,14 @@ Para definição de support count e confidence, sugiro que leia algum dos meus a
 
 Os passos  para gerar o arquivo foram de co-change:
 
-$ git clone https://github.com/apache/storm
-$ mkdir storm-hr
-$ cd storm-hr
-$ git init --bare
-$ cd ..
-$ docker run --rm -v $PWD/storm:/source -v $PWD/storm-hr:/dest projectdraco/g2h converter.sh /source /dest  # levou cerca de 3 horas
-$ cd storm-hr
-$ docker run -it --rm -v $PWD:/repo projectdraco/mining-cochange --output=rules-and-commits > storm-cochange.mdg # levou cerca de 1 hora
-
+  $ git clone https://github.com/apache/storm
+  $ mkdir storm-hr 
+  $ cd storm-hr 
+  $ git init --bare 
+  $ cd ..   
+  $ docker run --rm -v $PWD/storm:/source -v $PWD/storm-hr:/dest projectdraco/g2h converter.sh /source /dest  # levou cerca de 3 horas 
+  $ cd storm-hr 
+  $ docker run -it --rm -v $PWD:/repo projectdraco/mining-cochange --output=rules-and-commits > storm-cochange.mdg # levou cerca de 1       hora 
 
 Passos para pegar todos os commits com as datas:
 
