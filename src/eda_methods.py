@@ -1,7 +1,9 @@
 import numpy as np
+import pandas as pd
 import seaborn as sns
 from scipy import stats
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
+from pandas.api.types import CategoricalDtype
 
 
 def show_dist_categorical(in_df, col):
@@ -30,9 +32,9 @@ def show_dist_categorical(in_df, col):
     ).set(xlabel='Components Under Co-Change', ylabel='Count')
 
     # Get also the QQ-plot
-    fig = plt.figure()
-    res = stats.probplot(df[col], plot=plt)
-    plt.show()
+    # fig = plt.figure()
+    # res = stats.probplot(df[col], plot=plt)
+    # plt.show()
     # fig.show()
 
 
@@ -54,3 +56,90 @@ def show_barplot(in_df, col):
         data=df,
         kind="count",
     )
+
+
+def load_data(project_name: str):
+    '''
+    '''
+    # temporarily loads data for all commits before running SZZ
+    tmp =\
+        pd.read_csv(
+            'assets/data/{0}/{0}_commits.csv'.format(project_name),
+            header=None,
+            nrows=500
+        )
+
+    # transforms date column into datetime_index
+    old_commits =\
+        pd.Series(
+            tmp[0].values,
+            index=pd.DatetimeIndex(
+                pd.to_datetime(
+                    tmp[1].values,
+                    infer_datetime_format=True,
+                    utc=True
+                )
+            )
+        )
+
+    # removes temporary dataframe
+    del tmp
+
+    # temporarily loads data for all commits after running SZZ
+    tmp =\
+        pd.read_csv(
+            'assets/data/{0}/new_{0}_commits.csv'.format(project_name),
+            header=None,
+            nrows=500
+        )
+
+    # transforms date column into datetime_index
+    new_commits =\
+        pd.Series(
+            tmp[0].values,
+            index=pd.DatetimeIndex(
+                pd.to_datetime(
+                    tmp[1].values,
+                    infer_datetime_format=True,
+                    utc=True
+                )
+            )
+        )
+
+    # removes temporary dataframe
+    del tmp
+
+    # loads data for cochange count of each commit
+    cc_df =\
+        pd.read_csv(
+            'assets/data/{0}/{0}-cochange.tsv'.format(project_name),
+            header=None,
+            nrows=500,
+            sep='\t'
+        )[[2, 3, 6]]\
+        .rename(
+            columns={2: 'support_count', 3: 'confidence', 6: 'commit_hash'}
+        )
+
+    # transforms commit_hash into lists of hashes
+    cc_df.commit_hash = cc_df.commit_hash.apply(lambda x: x.split(','))
+
+    # transforms support_count into an ordinal categorical variable
+    cc_df.support_count =\
+        cc_df.support_count.astype(
+            CategoricalDtype(categories=np.unique(
+                cc_df.support_count.values),
+                ordered=True
+            )
+        )
+
+    # loads commits that introduce bugs
+    bic =\
+        pd.read_csv(
+            'assets/data/szz_phaseII.csv',
+            header=0,
+            usecols=['bic', 'name']
+        )
+    bic = bic[bic.name == project_name].drop(columns=['name']).copy()
+
+    return old_commits, new_commits, cc_df, bic
