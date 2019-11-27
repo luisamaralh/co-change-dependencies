@@ -31,3 +31,6 @@ Passos para pegar todos os commits com as datas:<br />
 git log --pretty=format:%H,%cd  >  all_commits.csv<br />
 
 Os commits que induziram bugs estão em ("szz_phaseII.csv")
+
+# Running the notebook
+Basta executar o script 'setup_environment_run_notebook.sh' que está na raiz do projeto.
