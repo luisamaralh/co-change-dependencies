@@ -65,8 +65,8 @@ def load_data(project_name: str):
     tmp =\
         pd.read_csv(
             'assets/data/{0}/{0}_commits.csv'.format(project_name),
-            header=None,
-            nrows=500
+            # nrows=100,
+            header=None
         )
 
     # transforms date column into datetime_index
@@ -85,12 +85,13 @@ def load_data(project_name: str):
     # removes temporary dataframe
     del tmp
 
+    # --------------------------------------------------------------------
     # temporarily loads data for all commits after running SZZ
     tmp =\
         pd.read_csv(
             'assets/data/{0}/new_{0}_commits.csv'.format(project_name),
-            header=None,
-            nrows=500
+            # nrows=100,
+            header=None
         )
 
     # transforms date column into datetime_index
@@ -109,12 +110,13 @@ def load_data(project_name: str):
     # removes temporary dataframe
     del tmp
 
+    # --------------------------------------------------------------------
     # loads data for cochange count of each commit
     cc_df =\
         pd.read_csv(
             'assets/data/{0}/{0}-cochange.tsv'.format(project_name),
             header=None,
-            nrows=500,
+            # nrows=100,
             sep='\t'
         )[[2, 3, 6]]\
         .rename(
@@ -133,6 +135,7 @@ def load_data(project_name: str):
             )
         )
 
+    # --------------------------------------------------------------------
     # loads commits that introduce bugs
     bic =\
         pd.read_csv(
@@ -140,6 +143,11 @@ def load_data(project_name: str):
             header=0,
             usecols=['bic', 'name']
         )
-    bic = bic[bic.name == project_name].drop(columns=['name'])
 
+    bic =\
+        bic[bic.name == project_name]\
+        .drop(columns=['name']).squeeze('columns')\
+        .reset_index(drop=True)
+
+    # --------------------------------------------------------------------
     return old_commits, new_commits, cc_df, bic
