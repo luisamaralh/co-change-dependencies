@@ -140,6 +140,6 @@ def load_data(project_name: str):
             header=0,
             usecols=['bic', 'name']
         )
-    bic = bic[bic.name == project_name].drop(columns=['name']).copy()
+    bic = bic[bic.name == project_name].drop(columns=['name'])
 
     return old_commits, new_commits, cc_df, bic
