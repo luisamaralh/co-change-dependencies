@@ -47,7 +47,7 @@ def show_barplot(in_df, col):
         style='whitegrid',
         palette="deep",
         font_scale=1.1,
-        rc={"figure.figsize": [5, 3]}
+        rc={"figure.figsize": [5, 10]}
     )
 
     sns.catplot(
@@ -55,6 +55,7 @@ def show_barplot(in_df, col):
         # y=df.groupby(col).count().iloc[:, 0],
         data=df,
         kind="count",
+        **{'log': True}
     )
 
 
