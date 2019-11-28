@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 from scipy import stats
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 from pandas.api.types import CategoricalDtype
 
 
@@ -38,7 +38,7 @@ def show_dist_categorical(in_df, col):
     # fig.show()
 
 
-def show_barplot(in_df, col):
+def show_barplot(in_df, col, y_logscale=False):
     '''
     '''
     df = in_df.copy()
@@ -46,8 +46,7 @@ def show_barplot(in_df, col):
     sns.set(
         style='whitegrid',
         palette="deep",
-        font_scale=1.1,
-        rc={"figure.figsize": [5, 10]}
+        font_scale=1.1
     )
 
     sns.catplot(
@@ -55,7 +54,7 @@ def show_barplot(in_df, col):
         # y=df.groupby(col).count().iloc[:, 0],
         data=df,
         kind="count",
-        **{'log': True}
+        **{'log': y_logscale}
     )
 
 
