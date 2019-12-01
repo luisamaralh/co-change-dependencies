@@ -20,10 +20,10 @@ apache/james-project
 apache/jena
 apache/kafka
 apache/karaf
-apache/kylin
+apache/kylin - processed
 apache/lucene-solr
 apache/mahout - processed
-apache/maven
+apache/maven - processed
 apache/netbeans - processed
 apache/nifi - processed
 apache/nutch - processed
