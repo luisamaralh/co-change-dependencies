@@ -1,4 +1,4 @@
-apache/accumulo
+apache/accumulo - processed
 apache/activemq
 apache/ambari
 apache/avro
@@ -22,9 +22,9 @@ apache/kafka
 apache/karaf
 apache/kylin
 apache/lucene-solr
-apache/mahout
+apache/mahout - processed
 apache/maven
-apache/netbeans
+apache/netbeans - processed
 apache/nifi - processed
 apache/nutch - processed
 apache/ofbiz
@@ -32,7 +32,7 @@ apache/parquet-mr - processed
 apache/phoenix - processed
 apache/servicecomb-java-chassis - processed
 apache/spark
-apache/storm
+apache/storm - processed
 apache/struts - processed
 apache/tika - processed
 apache/wicket
