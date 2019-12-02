@@ -1,9 +1,9 @@
 apache/accumulo - processed
-apache/activemq
+apache/activemqi - processed
 apache/ambari
-apache/avro
+apache/avro - processed
 apache/beam
-apache/calcite
+apache/calcite - processed
 apache/camel
 apache/cassandra
 apache/commons-lang
@@ -31,7 +31,7 @@ apache/ofbiz
 apache/parquet-mr - processed
 apache/phoenix - processed
 apache/servicecomb-java-chassis - processed
-apache/spark
+apache/spark - processed
 apache/storm - processed
 apache/struts - processed
 apache/tika - processed
