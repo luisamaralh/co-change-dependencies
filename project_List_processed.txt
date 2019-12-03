@@ -12,14 +12,14 @@ apache/cxf
 apache/eagle
 apache/fineract
 apache/flink
-apache/geode
+apache/geode - in progress
 apache/groovy
 apache/hive
 apache/ignite
-apache/james-project
-apache/jena
-apache/kafka
-apache/karaf
+apache/james-project - in progress
+apache/jena - in progress
+apache/kafka - in progress
+apache/karaf - in progress
 apache/kylin - processed
 apache/lucene-solr
 apache/mahout - processed
