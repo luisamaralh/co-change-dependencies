@@ -18,8 +18,8 @@ apache/hive
 apache/ignite
 apache/james-project - in progress
 apache/jena - in progress
-apache/kafka - in progress
-apache/karaf - in progress
+apache/kafka - processed
+apache/karaf - processed
 apache/kylin - processed
 apache/lucene-solr
 apache/mahout - processed
