@@ -1,27 +1,27 @@
 apache/accumulo - processed
 apache/activemqi - processed
-apache/ambari
+apache/ambari - processed
 apache/avro - processed
-apache/beam
+apache/beam - processed
 apache/calcite - processed
-apache/camel
-apache/cassandra
-apache/commons-lang
-apache/cordova-android
-apache/cxf
-apache/eagle
-apache/fineract
+apache/camel - in progress
+apache/cassandra - processed
+apache/commons-lang - processed
+apache/cordova-android - processed
+apache/cxf - in progress
+apache/eagle - processed
+apache/fineract - processed
 apache/flink
 apache/geode - in progress
-apache/groovy
-apache/hive
+apache/groovy - in progress
+apache/hive - in progress
 apache/ignite
 apache/james-project - in progress
 apache/jena - processed
 apache/kafka - processed
 apache/karaf - processed
 apache/kylin - processed
-apache/lucene-solr
+apache/lucene-solr - in progress
 apache/mahout - processed
 apache/maven - processed
 apache/netbeans - processed
