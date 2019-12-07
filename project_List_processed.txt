@@ -11,7 +11,7 @@ apache/cordova-android - processed
 apache/cxf - 
 apache/eagle - processed
 apache/fineract - processed
-apache/flink
+apache/flink - in progress
 apache/geode - in progress
 apache/groovy - 
 apache/hive - in progress
