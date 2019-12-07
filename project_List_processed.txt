@@ -8,15 +8,15 @@ apache/camel - in progress
 apache/cassandra - processed
 apache/commons-lang - processed
 apache/cordova-android - processed
-apache/cxf - in progress
+apache/cxf - 
 apache/eagle - processed
 apache/fineract - processed
 apache/flink
 apache/geode - in progress
-apache/groovy - in progress
+apache/groovy - 
 apache/hive - in progress
 apache/ignite
-apache/james-project - in progress
+apache/james-project - processed
 apache/jena - processed
 apache/kafka - processed
 apache/karaf - processed
