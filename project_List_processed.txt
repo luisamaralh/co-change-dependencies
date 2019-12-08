@@ -8,7 +8,7 @@ apache/camel - in progress
 apache/cassandra - processed
 apache/commons-lang - processed
 apache/cordova-android - processed
-apache/cxf - 
+apache/cxf - in progress
 apache/eagle - processed
 apache/fineract - processed
 apache/flink - in progress
