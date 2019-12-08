@@ -12,7 +12,7 @@ apache/cxf - in progress
 apache/eagle - processed
 apache/fineract - processed
 apache/flink - processed
-apache/geode - in progress
+apache/geode - processed
 apache/groovy - 
 apache/hive - in progress
 apache/ignite
