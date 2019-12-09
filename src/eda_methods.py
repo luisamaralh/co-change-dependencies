@@ -64,7 +64,7 @@ def load_data(project_name: str):
     # temporarily loads data for all commits before running SZZ
     tmp =\
         pd.read_csv(
-            'assets/data/{0}/{0}_commits.csv'.format(project_name),
+            '../assets/data/{0}/{0}_commits.csv'.format(project_name),
             # nrows=100,
             header=None
         )
@@ -89,7 +89,7 @@ def load_data(project_name: str):
     # temporarily loads data for all commits after running SZZ
     tmp =\
         pd.read_csv(
-            'assets/data/{0}/new_{0}_commits.csv'.format(project_name),
+            '../assets/data/{0}/new_{0}_commits.csv'.format(project_name),
             # nrows=100,
             header=None
         )
@@ -114,7 +114,7 @@ def load_data(project_name: str):
     # loads data for cochange count of each commit
     cc_df =\
         pd.read_csv(
-            'assets/data/{0}/{0}-cochange.tsv'.format(project_name),
+            '../assets/data/{0}/{0}-cochange.tsv'.format(project_name),
             header=None,
             # nrows=100,
             sep='\t'
@@ -139,7 +139,7 @@ def load_data(project_name: str):
     # loads commits that introduce bugs
     bic =\
         pd.read_csv(
-            'assets/data/szz_phaseII.csv',
+            '../assets/data/szz_phaseII.csv',
             header=0,
             usecols=['bic', 'name']
         )
