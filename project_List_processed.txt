@@ -13,7 +13,7 @@ apache/eagle - processed
 apache/fineract - processed
 apache/flink - processed
 apache/geode - processed
-apache/groovy - 
+apache/groovy - in progress
 apache/hive - in progress
 apache/ignite
 apache/james-project - processed
