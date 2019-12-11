@@ -15,7 +15,7 @@ apache/flink - processed - OK
 apache/geode - processed
 apache/groovy - processed - OK
 apache/hive - in progress
-apache/ignite
+apache/ignite - in progress
 apache/james-project - processed - OK
 apache/jena - processed - OK
 apache/kafka - processed - OK
