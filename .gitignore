@@ -1,4 +1,7 @@
 pyenv/
 .vscode/
-*pyc.venv/
+*pyc
 .venv/
+.venv/
+src/__pycache__/
+assets/data/
