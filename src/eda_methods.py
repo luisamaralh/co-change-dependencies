@@ -197,17 +197,27 @@ def load_data(project_name: str, kind=None) -> tuple:
         return tuple(result)
 
 
-def _get_multiIndex(series: pd.Series) -> pd.MultiIndex:
-    series = pd.Series(series)
+def _get_multiIndex(
+    incoming: (pd.Series or pd.DataFrame),
+    project: str
+) -> pd.MultiIndex:
+    '''
+    '''
+    if type(incoming) == pd.Series:
+        incoming = pd.Series(incoming)
+
+    else:
+        incoming = pd.DataFrame(incoming)
+
     return\
         pd.MultiIndex.from_tuples(
             [
-                (series.name, x) for x in series.index
+                (project, x) for x in incoming.index
             ]
         )
 
 
-def _melt_data(project_name: list, kind: str) -> pd.Series:
+def _melt_data(project_name: list, kind: str) -> (pd.Series or pd.DataFrame):
     '''
     Recursively concatenates Pandas Series for all projects in 'project_name'
     Returns Multi-level indexed Pandas Series (project, created_at)
@@ -217,7 +227,11 @@ def _melt_data(project_name: list, kind: str) -> pd.Series:
             ''.join(project_name[0]), kind=kind
         )
 
-        incoming.index = _get_multiIndex(incoming)
+        incoming.index =\
+            _get_multiIndex(
+                incoming,
+                project_name[0]
+            )
 
         return\
             pd.concat(
@@ -225,13 +239,17 @@ def _melt_data(project_name: list, kind: str) -> pd.Series:
                     incoming,
                     _melt_data(project_name[1:], kind)
                 ],
-                names=['project', 'created_at']
+                sort=False
             )
 
     except IndexError:
-        return pd.Series()
+        if kind == 'cochange':
+            return pd.DataFrame()
+
+        else:
+            return pd.Series()
 
 
-if __name__ == "__main__":
-    [old] = load_data('accumulo', kind='old')
-    old.index = _get_multiIndex(old)
+# if __name__ == "__main__":
+#     [old] = load_data('accumulo', kind='old')
+#     old.index = _get_multiIndex(old)
