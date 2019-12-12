@@ -27,7 +27,7 @@ apache/maven - processed - novo csv gerado.
 apache/netbeans - processed - BUGADO
 apache/nifi - processed - OK
 apache/nutch - processed - OK
-apache/ofbiz - in progress
+apache/ofbiz - processed - OK
 apache/parquet-mr - processed - OK
 apache/phoenix - processed - OK
 apache/servicecomb-java-chassis - processed - OK
@@ -35,5 +35,5 @@ apache/spark - processed - Necessita gerar os csv novamente com a data do autor.
 apache/storm - processed - Necessita gerar os csv novamente com a data do autor.
 apache/struts - processed - OK
 apache/tika - processed - OK
-apache/wicket - in progress
+apache/wicket - processed - OK
 apache/zeppelin - processed - OK
