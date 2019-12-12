@@ -1,39 +1,39 @@
-apache/accumulo - processed
-apache/activemqi - processed
-apache/ambari - processed
-apache/avro - processed
-apache/beam - processed
-apache/calcite - processed
+apache/accumulo - processed - Necessita gerar os csv novamente com a data do autor.
+apache/activemqi - processed - Necessita gerar os csv novamente com a data do autor.
+apache/ambari - processed - Falta subir.
+apache/avro - processed - OK
+apache/beam - processed - falta subir
+apache/calcite - processed - OK
 apache/camel - in progress
-apache/cassandra - processed
-apache/commons-lang - processed
+apache/cassandra - processed - OK
+apache/commons-lang - processed - OK
 apache/cordova-android - processed
-apache/cxf - processed
-apache/eagle - processed
-apache/fineract - processed
-apache/flink - processed
+apache/cxf - processed - OK
+apache/eagle - processed - falta subir
+apache/fineract - processed - falta subir
+apache/flink - processed - OK
 apache/geode - processed
-apache/groovy - processed 
+apache/groovy - processed - OK
 apache/hive - in progress
-apache/ignite
-apache/james-project - processed
-apache/jena - processed
-apache/kafka - processed
-apache/karaf - processed
-apache/kylin - processed
+apache/ignite - in progress
+apache/james-project - processed - OK
+apache/jena - processed - OK
+apache/kafka - processed - OK
+apache/karaf - processed - OK
+apache/kylin - processed - OK
 apache/lucene-solr - in progress
-apache/mahout - processed
-apache/maven - processed
-apache/netbeans - processed
-apache/nifi - processed
-apache/nutch - processed
-apache/ofbiz
-apache/parquet-mr - processed
-apache/phoenix - processed
-apache/servicecomb-java-chassis - processed
-apache/spark - processed
-apache/storm - processed
-apache/struts - processed
-apache/tika - processed
-apache/wicket
-apache/zeppelin - processed
+apache/mahout - processed - OK
+apache/maven - processed - novo csv gerado.
+apache/netbeans - processed - BUGADO
+apache/nifi - processed - OK
+apache/nutch - processed - OK
+apache/ofbiz - processed - OK
+apache/parquet-mr - processed - OK
+apache/phoenix - processed - OK
+apache/servicecomb-java-chassis - processed - OK
+apache/spark - processed - Necessita gerar os csv novamente com a data do autor.
+apache/storm - processed - Necessita gerar os csv novamente com a data do autor.
+apache/struts - processed - OK
+apache/tika - processed - OK
+apache/wicket - processed - OK
+apache/zeppelin - processed - OK
