@@ -1,6 +1,6 @@
 apache/accumulo - processed - Necessita gerar os csv novamente com a data do autor.
 apache/activemqi - processed - Necessita gerar os csv novamente com a data do autor.
-apache/ambari - processed - Falta subir.
+apache/ambari - processed - Falta subir. 
 apache/avro - processed - OK
 apache/beam - processed - falta subir
 apache/calcite - processed - OK
@@ -9,22 +9,22 @@ apache/cassandra - processed - OK
 apache/commons-lang - processed - OK
 apache/cordova-android - processed
 apache/cxf - processed - OK
-apache/eagle - processed - falta subir
-apache/fineract - processed - falta subir
+apache/eagle - processed - OK
+apache/fineract - processed - OK
 apache/flink - processed - OK
-apache/geode - processed
+apache/geode - processed - OK
 apache/groovy - processed - OK
-apache/hive - in progress
-apache/ignite - in progress
+apache/hive - BUGGED
+apache/ignite - BUGGED
 apache/james-project - processed - OK
 apache/jena - processed - OK
 apache/kafka - processed - OK
 apache/karaf - processed - OK
 apache/kylin - processed - OK
-apache/lucene-solr - in progress
+apache/lucene-solr - BUGGED
 apache/mahout - processed - OK
-apache/maven - processed - novo csv gerado.
-apache/netbeans - processed - BUGADO
+apache/maven - processed - OK
+apache/netbeans - processed - OK
 apache/nifi - processed - OK
 apache/nutch - processed - OK
 apache/ofbiz - processed - OK
@@ -35,5 +35,5 @@ apache/spark - processed - Necessita gerar os csv novamente com a data do autor.
 apache/storm - processed - Necessita gerar os csv novamente com a data do autor.
 apache/struts - processed - OK
 apache/tika - processed - OK
-apache/wicket - processed - OK
+apache/wicket
 apache/zeppelin - processed - OK
