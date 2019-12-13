@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -69,12 +70,21 @@ def load_data(project_name: str, kind=None) -> tuple:
     '''
     if (not kind or 'old' in kind):
         # temporarily loads data for all commits before running SZZ
-        tmp =\
-            pd.read_csv(
-                'assets/data/{0}/{0}_commits.csv'.format(project_name),
-                # nrows=100,
-                header=None
-            )
+        try:
+            tmp =\
+                pd.read_csv(
+                    'assets/data/{0}/{0}_commits.csv'.format(project_name),
+                    # nrows=100,
+                    header=None
+                )
+        except UnicodeDecodeError:
+            tmp =\
+                pd.read_csv(
+                    'assets/data/{0}/{0}_commits.csv'.format(project_name),
+                    # nrows=100,
+                    header=None,
+                    encoding='utf-16'
+                )
 
         # transforms date column into datetime_index
         old_commits =\
@@ -96,12 +106,21 @@ def load_data(project_name: str, kind=None) -> tuple:
     # --------------------------------------------------------------------
     if (not kind or 'new' in kind):
         # temporarily loads data for all commits after running SZZ
-        tmp =\
-            pd.read_csv(
-                'assets/data/{0}/new_{0}_commits.csv'.format(project_name),
-                # nrows=100,
-                header=None
-            )
+        try:
+            tmp =\
+                pd.read_csv(
+                    'assets/data/{0}/new_{0}_commits.csv'.format(project_name),
+                    # nrows=100,
+                    header=None
+                )
+        except UnicodeDecodeError:
+            tmp =\
+                pd.read_csv(
+                    'assets/data/{0}/new_{0}_commits.csv'.format(project_name),
+                    # nrows=100,
+                    header=None,
+                    encoding='utf-16'
+                )
 
         # transforms date column into datetime_index
         new_commits =\
@@ -248,6 +267,43 @@ def _melt_data(project_name: list, kind: str) -> (pd.Series or pd.DataFrame):
 
         else:
             return pd.Series()
+
+    except UnicodeDecodeError as e:
+        error_codec, error_f, error_msg, error_pos, _ = tuple(e.args)
+        custom_msg =\
+            'Error while loading file "{0}" for project "{1}"'\
+            .format(kind, project_name[0])
+
+        raise UnicodeDecodeError(
+            error_codec, error_f, error_msg, error_pos, custom_msg
+        )
+
+
+def load_data_all(exception=[]) -> [
+    pd.Series,
+    pd.Series,
+    pd.DataFrame,
+    pd.Series
+]:
+    '''
+    '''
+    all_proj =\
+        [
+            project for project
+            in os.listdir('assets/data/')
+            if project not in exception
+        ]
+
+    # try:
+    return tuple(
+        _melt_data(all_proj, 'old'),
+        _melt_data(all_proj, 'new'),
+        _melt_data(all_proj, 'cochange'),
+        _melt_data(all_proj, 'bic'),
+    )
+
+    # except UnicodeDecodeError:
+    #     return []
 
 
 # if __name__ == "__main__":
