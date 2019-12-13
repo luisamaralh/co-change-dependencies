@@ -59,7 +59,7 @@ def show_barplot(in_df, col, y_logscale=False):
     )
 
 
-def load_data(project_name: str, kind=None) -> tuple:
+def load_data(project_name: str, kind=None, nrows=None) -> tuple:
     '''
     Receives a project name and a, optionally, the kind of data to fetch
     Kind can be:
@@ -74,14 +74,14 @@ def load_data(project_name: str, kind=None) -> tuple:
             tmp =\
                 pd.read_csv(
                     'assets/data/{0}/{0}_commits.csv'.format(project_name),
-                    # nrows=100,
+                    nrows=nrows,
                     header=None
                 )
         except UnicodeDecodeError:
             tmp =\
                 pd.read_csv(
                     'assets/data/{0}/{0}_commits.csv'.format(project_name),
-                    # nrows=100,
+                    nrows=nrows,
                     header=None,
                     encoding='utf-16'
                 )
@@ -110,14 +110,14 @@ def load_data(project_name: str, kind=None) -> tuple:
             tmp =\
                 pd.read_csv(
                     'assets/data/{0}/new_{0}_commits.csv'.format(project_name),
-                    # nrows=100,
+                    nrows=nrows,
                     header=None
                 )
         except UnicodeDecodeError:
             tmp =\
                 pd.read_csv(
                     'assets/data/{0}/new_{0}_commits.csv'.format(project_name),
-                    # nrows=100,
+                    nrows=nrows,
                     header=None,
                     encoding='utf-16'
                 )
@@ -146,11 +146,15 @@ def load_data(project_name: str, kind=None) -> tuple:
             pd.read_csv(
                 'assets/data/{0}/{0}-cochange.mdg'.format(project_name),
                 header=None,
-                # nrows=100,
+                nrows=nrows,
                 sep='\t'
             )[[2, 3, 6]]\
             .rename(
-                columns={2: 'support_count', 3: 'confidence', 6: 'commit_hash'}
+                columns={
+                    2: 'support_count',
+                    3: 'confidence',
+                    6: 'commit_hash'
+                }
             )
 
         # transforms commit_hash into lists of hashes
@@ -177,7 +181,8 @@ def load_data(project_name: str, kind=None) -> tuple:
 
         bic =\
             bic[bic.name == project_name]\
-            .drop(columns=['name']).squeeze('columns')\
+            .drop(columns=['name'])\
+            .squeeze('columns')\
             .reset_index(drop=True)
 
         bic.name = project_name
@@ -222,11 +227,11 @@ def _get_multiIndex(
 ) -> pd.MultiIndex:
     '''
     '''
-    if type(incoming) == pd.Series:
-        incoming = pd.Series(incoming)
+    # if type(incoming) == pd.Series:
+    #     incoming = pd.Series(incoming)
 
-    else:
-        incoming = pd.DataFrame(incoming)
+    # else:
+    #     incoming = pd.DataFrame(incoming)
 
     return\
         pd.MultiIndex.from_tuples(
@@ -236,14 +241,20 @@ def _get_multiIndex(
         )
 
 
-def _melt_data(project_name: list, kind: str) -> (pd.Series or pd.DataFrame):
+def _melt_data(
+    project_name: list,
+    kind: str,
+    nrows=None
+) -> (pd.Series or pd.DataFrame):
     '''
     Recursively concatenates Pandas Series for all projects in 'project_name'
     Returns Multi-level indexed Pandas Series (project, created_at)
     '''
     try:
         [incoming] = load_data(
-            ''.join(project_name[0]), kind=kind
+            ''.join(project_name[0]),
+            kind=kind,
+            nrows=nrows
         )
 
         incoming.index =\
@@ -256,7 +267,10 @@ def _melt_data(project_name: list, kind: str) -> (pd.Series or pd.DataFrame):
             pd.concat(
                 [
                     incoming,
-                    _melt_data(project_name[1:], kind)
+                    _melt_data(
+                        project_name[1:],
+                        kind, nrows=nrows
+                    )
                 ],
                 sort=False
             )
@@ -279,7 +293,7 @@ def _melt_data(project_name: list, kind: str) -> (pd.Series or pd.DataFrame):
         )
 
 
-def load_data_all(exception=[]) -> [
+def load_data_all(exception=[], nrows=None) -> [
     pd.Series,
     pd.Series,
     pd.DataFrame,
@@ -295,17 +309,15 @@ def load_data_all(exception=[]) -> [
         ]
 
     # try:
-    return tuple(
-        _melt_data(all_proj, 'old'),
-        _melt_data(all_proj, 'new'),
-        _melt_data(all_proj, 'cochange'),
-        _melt_data(all_proj, 'bic'),
-    )
+    return\
+        _melt_data(all_proj, 'old', nrows=nrows),\
+        _melt_data(all_proj, 'new', nrows=nrows),\
+        _melt_data(all_proj, 'cochange', nrows=nrows),\
+        _melt_data(all_proj, 'bic', nrows=nrows)
 
     # except UnicodeDecodeError:
     #     return []
 
 
 # if __name__ == "__main__":
-#     [old] = load_data('accumulo', kind='old')
-#     old.index = _get_multiIndex(old)
+#     old, new, cochange, bic = load_data_all(nrows=100)
