@@ -170,7 +170,7 @@ def load_data(project_name: str, kind=None) -> tuple:
         # loads commits that introduce bugs
         bic =\
             pd.read_csv(
-                'assets/data/szz_phaseII.csv',
+                'assets/data/szz_phase2.csv',
                 header=0,
                 usecols=['bic', 'name']
             )
@@ -291,7 +291,7 @@ def load_data_all(exception=[]) -> [
         [
             project for project
             in os.listdir('assets/data/')
-            if project not in exception
+            if (project not in exception) and ('szz' not in project)
         ]
 
     # try:
