@@ -90,13 +90,11 @@ def load_data(project_name: str, kind=None, nrows=None) -> tuple:
         old_commits =\
             pd.Series(
                 tmp[0].values,
-                index=pd.DatetimeIndex(
-                    pd.to_datetime(
+                index=pd.to_datetime(
                         tmp[1].values,
                         infer_datetime_format=True,
                         utc=True
                     )
-                )
             )
         old_commits.name = project_name
 
@@ -126,13 +124,11 @@ def load_data(project_name: str, kind=None, nrows=None) -> tuple:
         new_commits =\
             pd.Series(
                 tmp[0].values,
-                index=pd.DatetimeIndex(
-                    pd.to_datetime(
+                index=pd.to_datetime(
                         tmp[1].values,
                         infer_datetime_format=True,
                         utc=True
                     )
-                )
             )
         new_commits.name = project_name
 
