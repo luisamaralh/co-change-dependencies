@@ -4,3 +4,5 @@ pyenv/
 .venv/
 src/__pycache__/
 assets/data/
+assets/co-change-20191218T144544Z-001.zip
+old_data/
