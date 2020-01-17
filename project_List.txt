@@ -1,16 +1,15 @@
-apache/accumulo
-apache/activemq
+apache/accumulo  -- C
+apache/activemq		
 apache/ambari
-apache/avro
+apache/avro	-- C
 apache/beam
-apache/calcite
-apache/camel
-apache/cassandra
-apache/commons-lang
-apache/cordova-android
+apache/camel	-- C
+apache/cassandra	--C
+apache/cordova-android	--C
+apache/commons-lang 	--C*
 apache/cxf
-apache/eagle
-apache/fineract
+apache/eagle		--C
+apache/fineract		--C
 apache/flink
 apache/geode
 apache/groovy
@@ -18,21 +17,18 @@ apache/hive
 apache/ignite
 apache/james-project
 apache/jena
-apache/kafka
 apache/karaf
 apache/kylin
-apache/lucene-solr
+apache/lucene-solr	--C
 apache/mahout
-apache/maven
-apache/netbeans
+apache/netbeans	--C
 apache/nifi
 apache/nutch
 apache/ofbiz
 apache/parquet-mr
 apache/phoenix
-apache/servicecomb-java-chassis
-apache/spark
-apache/storm
+apache/spark	--C
+apache/storm	--C
 apache/struts
 apache/tika
 apache/wicket
