@@ -1,8 +1,8 @@
 apache/accumulo  -- C
-apache/activemq		
-apache/ambari
+apache/activemq  --C		
+apache/ambari   --C
 apache/avro	-- C
-apache/beam
+apache/beam --C
 apache/camel	-- C
 apache/cassandra	--C
 apache/cordova-android	--C
@@ -13,8 +13,8 @@ apache/fineract		--C
 apache/flink
 apache/geode
 apache/groovy
-apache/hive
-apache/ignite
+apache/hive   --C
+apache/ignite   --C
 apache/james-project
 apache/jena
 apache/karaf
@@ -25,7 +25,7 @@ apache/netbeans	--C
 apache/nifi
 apache/nutch
 apache/ofbiz
-apache/parquet-mr
+apache/parquet-mr 
 apache/phoenix
 apache/spark	--C
 apache/storm	--C
